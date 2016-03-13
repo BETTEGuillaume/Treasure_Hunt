@@ -1,25 +1,25 @@
-
-import java.util.HashMap;
-
-
 public class Parcelle {
 	
 	private String nom;
-	
-	private static HashMap<String, int[]> pos = new HashMap<String, int[]>();
-	
+	private int decor;
+
 	public Parcelle(){
-		
 	}
 	public Parcelle(String nom){
 		this.nom = nom;
-	}	
-	
-	public Parcelle(String nom, int x, int y){
-		this(nom);
-		pos.put(nom, new int[]{x,y});
+	}
+	public Parcelle(String nom, int decor){
+		this.nom = nom;
+		this.decor = decor;
+	}
+	public int getDecor() {
+		return decor;
+	}
+	public void setDecor(int decor) {
+		this.decor = decor;
 	}
 	
+
 	public String getNom() {
 		return nom;
 	}
@@ -32,8 +32,5 @@ public class Parcelle {
 		return this.nom.equals(p.nom);
 	}
 	
-	public static void ajouterPosition(String nom, int[] posi){
-		pos.put(nom, posi);
-	}
 	
 }

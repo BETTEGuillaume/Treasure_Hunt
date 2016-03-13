@@ -3,10 +3,11 @@ import java.util.Random;
 public class Initialisation {
 	int taille;
 	int pourcentageRochers;
+	Parcelle parce;
 	Plateau plateau;
-	String[] image = { "images/rocher.png", "images/mer.png", "images/1.explorateur.png", "images/1.navire.png",
-			"images/1.piegeur.png", "images/2.explorateur.png", "images/2.navire.png", "images/2.pegeur.png",
-			"images/arbre.png", "images/coffre.png" };
+	String[] image = { "Projet/images/rocher.png", "Projet/images/mer.png", "Projet/images/1.explorateur.png", "Projet/images/1.navire.png",
+			"Projet/images/1.piegeur.png", "Projet/images/2.explorateur.png", "Projet/images/2.navire.png", "Projet/images/2.pegeur.png",
+			"Projet/images/arbre.png", "Projet/images/coffre.png" };
 	
 	public Initialisation(int taille,int pourcentageRochers){
 		this.taille=taille;
@@ -16,19 +17,21 @@ public class Initialisation {
 	
 	public void remplirCarte() {
 		int terre=0;
-		int mer=10;
+		int mer=2;
 		int[][] jeu = plateau.getJeu();
 		
-		// Set la map a vide
+		// Set la map a vide avec la terre et la mer
 		for (int i = 0; i < taille; i++){
 			for (int j = 0; j < taille; j++){
-				jeu[i][j] = terre;
-				if(i==0 || i==taille || j==0 || j==taille){
-					jeu[i][j]=mer;		
+				parce = new Parcelle("Terre",terre);
+				jeu[i][j] = parce.getDecor();
+				if(i==0 || i==taille-1 || j==0 || j==taille-1){
+					parce = new Parcelle("Mer",mer);
+					jeu[i][j]= parce.getDecor();		
+
 				}
 			}
 		}
-		jeu[5][5] = 5;
 		plateau.setJeu(jeu);
 	}
 	

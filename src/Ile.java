@@ -32,7 +32,6 @@ public class Ile {
 				if (y == 0 || y == ile[1].length - 1 || x == 0 || x == ile.length - 1) {
 					if (Navire.getNbEquipe() != 3 && new Random().nextDouble() < 0.10) {
 						ajouterParcelle(new Parcelle("Navire" + Navire.getNbEquipe()), x, y);
-						Parcelle.ajouterPosition("Navire" + Navire.getNbEquipe(), new int[] { x, y });
 						new Navire(new ArrayList<String>());
 						jeu[x][y] = 4;
 					} else {
@@ -56,9 +55,7 @@ public class Ile {
 	public void ajouterCoffreEtClef() {
 		int[] clef = valeurAleatoireXEtY();
 		ajouterParcelle(new Parcelle("Clef"), clef[0], clef[1]);
-		Parcelle.ajouterPosition("Clef", clef);
 		int[] coffre = valeurAleatoireXEtY();
-		Parcelle.ajouterPosition("Coffre", coffre);
 		ajouterParcelle(new Parcelle("Coffre"), coffre[0], coffre[1]);
 	}
 

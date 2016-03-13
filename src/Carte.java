@@ -1,5 +1,5 @@
 
-public class Carte { /** */
+public class Carte {
 
 	private Initialisation grille;
 
@@ -8,13 +8,16 @@ public class Carte { /** */
 			"images/1.piegeur.png", "images/2.explorateur.png", "images/2.navire.png", "images/2.pegeur.png",
 			"images/arbre.png", "images/coffre.png" };
 
-	public Carte() {
-		remplirCarte(10,30);
+	public Carte(int pourcentage) {
+		remplirCarte(10,pourcentage);
 	}
 
 	public Carte(int taille,int pourcentage) {
 		remplirCarte(taille,pourcentage);
 	}
+
+
+
 
 	public int[][] getJeu() {
 		return grille.getJeu();
