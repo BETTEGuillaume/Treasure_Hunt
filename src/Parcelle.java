@@ -1,36 +1,64 @@
+
 public class Parcelle {
 	
-	private String nom;
-	private int decor;
-
+	private Object obj;
+	
 	public Parcelle(){
-	}
-	public Parcelle(String nom){
-		this.nom = nom;
-	}
-	public Parcelle(String nom, int decor){
-		this.nom = nom;
-		this.decor = decor;
-	}
-	public int getDecor() {
-		return decor;
-	}
-	public void setDecor(int decor) {
-		this.decor = decor;
+		obj=new Vide();
 	}
 	
+	public Object getParcelle(){
+		return obj;	
+	}
+	
+	public void setParcelle(Object objet){
+		obj=objet;
+	}
+	
+	public void removeParcelle(){
+		obj=new Vide();
+	}
+	
+	public boolean debarquementPossible(Parcelle[][] ile,int x,int y,int taille){
 
-	public String getNom() {
-		return nom;
+		if(x==1 && (y!=0 && y!=taille-1)){
+			if((ile[x+1][y].getParcelle() instanceof Rocher || ile[x+1][y].getParcelle() instanceof Navire) &&
+				(ile[x][y-1].getParcelle() instanceof Rocher || ile[x][y-1].getParcelle() instanceof Navire || y==2) &&
+				(ile[x][y+1].getParcelle() instanceof Rocher || ile[x][y+1].getParcelle() instanceof Navire || y==taille-2)){
+				return false;
+			}
+		}else if(x==taille-2 && (y!=0 && y!=taille-1)){
+			if((ile[x-1][y].getParcelle() instanceof Rocher || ile[x-1][y].getParcelle() instanceof Navire) &&
+				(ile[x][y-1].getParcelle() instanceof Rocher || ile[x][y-1].getParcelle() instanceof Navire || y==2) &&
+				(ile[x][y+1].getParcelle() instanceof Rocher || ile[x][y+1].getParcelle() instanceof Navire || y==taille-2)){
+				return false;	
+			}
+		}else if(y==1 && (x!=0 && x!=taille-1)){
+			if((ile[x][y+1].getParcelle() instanceof Rocher || ile[x][y+1].getParcelle() instanceof Navire) &&
+				(ile[x-1][y].getParcelle() instanceof Rocher || ile[x-1][y].getParcelle() instanceof Navire || x==2) &&
+				(ile[x+1][y].getParcelle() instanceof Rocher || ile[x+1][y].getParcelle() instanceof Navire || x==taille-2)){
+				return false;	
+			}
+		}else if(y==taille-2 && (x!=0 && x!=taille-1)){
+			if((ile[x][y-1].getParcelle() instanceof Rocher || ile[x][y-1].getParcelle() instanceof Navire) &&
+				(ile[x-1][y].getParcelle() instanceof Rocher || ile[x-1][y].getParcelle() instanceof Navire || x==2) &&
+				(ile[x+1][y].getParcelle() instanceof Rocher || ile[x+1][y].getParcelle() instanceof Navire || x==taille-2)){
+				return false;	
+			}
+		}
+		if(ile[x][y].getParcelle() instanceof Rocher || ile[x][y].getParcelle() instanceof Navire){
+			return false;
+		}
+		
+		return true;
+
 	}
 	
-	public void setNom(String nom) {
-		this.nom = nom;
+	public boolean getCle(){
+		return ((Rocher)obj).getCle();
 	}
 	
-	public boolean equals(Parcelle p){
-		return this.nom.equals(p.nom);
+	public boolean getCoffre(){
+		return ((Rocher)obj).getCoffre();
 	}
-	
-	
 }

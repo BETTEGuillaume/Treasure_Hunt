@@ -1,17 +1,15 @@
 import javax.swing.JOptionPane;
 
 public class Menu {
-	String taille;
-	String pourcentage;
+
 	String choix = JOptionPane.showInputDialog(null,
 			"Que souhaitez vous faire? \n1)Jouer avec une taille que vous choississez \n2)Jouer avec une taille de 10*10\n3)Regles \n4)Quitter");
 	// Si l'ulitisateur choisi d'avoir les regles
 	boolean boo = false;
 	boolean boo1 = false;
 	boolean boo2 = false;
-	int minimum = 7;
+	int minimum = 10;
 	int maximum = 50;
-	Carte l;
 
 	{
 		// Rajouter la verification si les arguments sont bien des int et non
@@ -25,8 +23,7 @@ public class Menu {
 
 			// Si l'utilisateur choisit de configurer sa taille
 			else if (choix.equals("1")) {
-				 taille = JOptionPane.showInputDialog(null,
-						"Quelle est la taille de votre carte?(Minimum " + minimum + ")");
+				String taille = JOptionPane.showInputDialog(null,"Quelle est la taille de votre carte?(Minimum " + minimum + ")");
 				if (taille == null) {
 					JOptionPane.showMessageDialog(null,
 							"Vous avez décidez de vous enfuir ! Levez l'ancre moussaillon !!");
@@ -52,44 +49,25 @@ public class Menu {
 						boo1 = true;
 				}
 
-				 pourcentage = JOptionPane.showInputDialog(null,
-						"Choisissez une proportion de rochers?(Ex:30-40-50 etc.)");
-
+				String pourcentage = JOptionPane.showInputDialog(null,"Choisissez une proportion de rochers?(20 pour l'instant)");
+				
 				while (!boo2) {
-					if (!pourcentage.matches("[0-9]*")) {
+					if (!pourcentage.matches("[0-9]*")|| Integer.parseInt(pourcentage)!=20) {
 						JOptionPane.showMessageDialog(null, "Veuillez rentrer un argument valide s'il vous plait.");
-						pourcentage = JOptionPane.showInputDialog(null,
-								"Choisissez une proportion de rochers?(Ex:30-40-50 etc.)");
-					} 
-					else if(pourcentage == null){
-						JOptionPane.showMessageDialog(null, "Veuillez rentrer un argument valide s'il vous plait.");
-						pourcentage = JOptionPane.showInputDialog(null,
-								"Choisissez une proportion de rochers?(Ex:30-40-50 etc.)");
-					}
-						else {
+						pourcentage = JOptionPane.showInputDialog(null,"Choisissez une proportion de rochers?(20 pour l'instant)");
+					}else{
 						boo2 = true;
 					}
 				}
-
-				l = new Carte(Integer.parseInt(taille), Integer.parseInt(pourcentage));
+				
+				Jeu l = new Jeu(Integer.parseInt(taille),Integer.parseInt(pourcentage));
 				boo = true;
 			}
 
 			// Si l'utilisateur utilise la carte par défaut
 			else if (choix.equals("2")) {
-				 pourcentage = JOptionPane.showInputDialog(null,
-						"Choisissez une proportion de rochers?(Ex:30-40-50 etc.)");
-				while (!boo2) {
-					if (!pourcentage.matches("[0-9]*")) {
-						JOptionPane.showMessageDialog(null, "Veuillez rentrer un argument valide s'il vous plait.");
-						pourcentage = JOptionPane.showInputDialog(null,
-								"Choisissez une proportion de rochers?(Ex:30-40-50 etc.)");
-					} else {
-						boo2 = true;
-					}
-					l = new Carte(10, Integer.parseInt(pourcentage));
-					boo = true;
-				}
+				Jeu z = new Jeu();
+				boo = true;
 			} else if (choix.equals("3")) {
 				JOptionPane.showMessageDialog(null, "Voici les regles du jeu !\n ");
 				choix = JOptionPane.showInputDialog(null,

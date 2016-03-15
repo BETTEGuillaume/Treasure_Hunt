@@ -1,36 +1,14 @@
-import java.util.ArrayList;
 
 public class Navire {
-
-	private static int nbEquipe = 1;
-
-	private int equipe = 0;
-
-	ArrayList<String> equipage = new ArrayList<String>();
-
-	public Navire() {
-
+	private int joueur;
+	
+	public Navire(int j){
+		if(j==1 || j==2){
+			joueur=j;
+		}
 	}
-
-	public Navire(ArrayList<String> team) {
-		setEquipe(nbEquipe++);
-		equipage = team;
+	
+	public int getJoueur(){
+		return joueur;
 	}
-
-	public int getEquipe() {
-		return equipe;
-	}
-
-	public void setEquipe(int equipe) {
-		this.equipe = equipe;
-	}
-
-	public static int getNbEquipe() {
-		return nbEquipe;
-	}
-
-	public static void setNbEquipe(int nbEquipe) {
-		Navire.nbEquipe = nbEquipe;
-	}
-
 }
