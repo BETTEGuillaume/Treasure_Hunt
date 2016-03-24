@@ -1,4 +1,5 @@
 
-public class Explorateur {
+public class Explorateur extends Personnages{
+
 
 }
