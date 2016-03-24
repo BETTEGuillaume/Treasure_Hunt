@@ -1,7 +1,37 @@
-
+/**
+ * <b>Jeu est la classe qui permet de lancer deux modes différents, un avec des valeurs par défaut et un avec des valeurs personnalisables</b>
+ * <p>
+ * Elle est caractérisée par :
+ * <ul>
+ * <li>Une ile</li>
+ * </ul>
+ * </p>
+ * <p>
+ * Elle créer l'ile, la remplit et l'affiche.
+ * </p>
+ * 
+ * @see Ile
+ * 
+ * @author Laurine
+ */
 public class Jeu {
+	
+	/**
+	 * Ile du jeu en cours.
+	 */
 	private Ile ile;
 	
+	/**
+	 * Constructeur vide de Jeu.
+	 * 
+	 * @see Ile#Ile()
+	 * @see Ile#remplirRochers()
+	 * @see Ile#remplirNavire(int)
+	 * @see Ile#accessible()
+	 * @see Ile#remplirCleCoffre()
+	 * @see Ile#getJeu()
+	 * @see Ile#affichage()
+	 */
 	public Jeu(){
 		ile=new Ile();
 		ile.remplirRochers();
@@ -11,18 +41,25 @@ public class Jeu {
 		ile.remplirCleCoffre();
 		ile.getJeu();
 		ile.affichage();
-		/*
-		boolean[][] acces = ile.toutEstAccessible(new boolean[taille][taille],ile.getPosNav1()[0],ile.getPosNav1()[1]);
-
-		for (int i = 0; i < taille; i++) {
-			for (int j = 0; j < taille; j++) {
-				System.out.print(acces[i][j] + " ");
-			}
-			System.out.println();
-		}*/
 	}
 	
-	
+	/**
+	 * Constructeur de Jeu.
+	 * 
+	 * @param taille
+	 * 				Taille de l'ile voulue
+	 * 
+	 * @param pourcentageRochers
+	 * 				Pourcentage de rochers voulu
+	 * 
+	 * @see Ile#Ile(int, int)
+	 * @see Ile#remplirRochers()
+	 * @see Ile#remplirNavire(int)
+	 * @see Ile#accessible()
+	 * @see Ile#remplirCleCoffre()
+	 * @see Ile#getJeu()
+	 * @see Ile#affichage()
+	 */
 	public Jeu(int taille,int pourcentageRochers){
 		ile=new Ile(taille,pourcentageRochers);
 		ile.remplirRochers();
@@ -32,7 +69,6 @@ public class Jeu {
 		ile.remplirCleCoffre();
 		ile.getJeu();
 		ile.affichage();
-		//ile.toutEstAccessible(new boolean[taille][taille],ile.getPosNav1()[0],ile.getPosNav1()[1]);
 	}
 	
 
